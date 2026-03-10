@@ -27,25 +27,18 @@
             </div>
            <div class="card">
                <div class="card-body">
-                   <table class="table table-striped">
-                       <thead>
-                       <tr>
-                           <th>ID</th>
-                           <th>Name</th>
-                           <th>Description</th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       @foreach($categories as $category)
-                           <tr>
-                               <td>{{ $category->id }}</td>
-                               <td>{{ $category->name }}</td>
-                               <td>{{ $category->description }}</td>
-                           </tr>
-                       @endforeach
-                       </tbody>
-                   </table>
-
+                   <form method="post" action="{{route('category.store')}}">
+                       @csrf
+                       <div class="form-group">
+                           <label for="name">Name</label>
+                           <input type="text" id="name" class="form-input" maxlength="60">
+                       </div>
+                       <div class="form-group">
+                           <label for="description">Description</label>
+                           <textarea type="text" id="description" name="description" class="form-input" rows="2" maxlength="150"></textarea>
+                       </div>
+                       <button  type="submit">Submit</button>
+                   </form>
                </div>
            </div>
         </div>

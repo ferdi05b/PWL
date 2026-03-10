@@ -1,11 +1,19 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('starter');
 });
+
+//Category Mgmt
+Route::get('/category', [CategoryController::class, "index"])-> name('category.index');
+Route::get('/category/create', [CategoryController::class, "create"])-> name('category.create');
+Route::post('/category/create', [CategoryController::class, "store"])-> name('category.store');
+
+//Route::get('/student', [StudentController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
