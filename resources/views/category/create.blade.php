@@ -31,13 +31,13 @@
                        @csrf
                        <div class="form-group">
                            <label for="name">Name</label>
-                           <input type="text" id="name" class="form-input" maxlength="60">
+                           <input type="text" id="name" name="name" class="form-control" maxlength="60" autofocus required>
                        </div>
                        <div class="form-group">
                            <label for="description">Description</label>
-                           <textarea type="text" id="description" name="description" class="form-input" rows="2" maxlength="150"></textarea>
+                           <textarea type="text" id="description" name="description" class="form-control" rows="2" maxlength="150"></textarea>
                        </div>
-                       <button  type="submit">Submit</button>
+                       <button  type="submit" class="btn btn-primary">Save</button>
                    </form>
                </div>
            </div>

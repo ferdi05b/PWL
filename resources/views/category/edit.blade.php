@@ -27,17 +27,22 @@
             </div>
            <div class="card">
                <div class="card-body">
-                   <form method="post" action="{{route('category.store')}}">
+                   <form method="post" action="{{route('category.update', $category->id) }}">
                        @csrf
+                       @method('PUT')
+                       <div class="form-group">
+                           <label for="id">ID</label>
+                           <input type="number" id="id" name="id" class="form-control" maxlength="60" readonly value="{{$category->id }}">
+                       </div>
                        <div class="form-group">
                            <label for="name">Name</label>
-                           <input type="text" id="name" name="name" class="form-control" maxlength="60">
+                           <input type="text" id="name" name="name" class="form-control" maxlength="60" autofocus required value="{{$category->name }}">
                        </div>
                        <div class="form-group">
                            <label for="description">Description</label>
-                           <textarea type="text" id="description" name="description" class="form-control" rows="2" maxlength="150"></textarea>
+                           <textarea type="text" id="description" name="description" class="form-control" rows="2" maxlength="150">{{ $category->description }}</textarea>
                        </div>
-                       <button  type="submit" class="btn btn-primary">Save</button>
+                       <button type="submit" class="btn btn-primary">Update</button>
                    </form>
                </div>
            </div>

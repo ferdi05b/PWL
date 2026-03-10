@@ -32,20 +32,31 @@
                <div class="card-body">
                    <table class="table table-striped">
                        <thead>
-                       <tr>
-                           <th>ID</th>
-                           <th>Name</th>
-                           <th>Description</th>
-                       </tr>
+                           <tr>
+                               <th>ID</th>
+                               <th>Name</th>
+                               <th>Description</th>
+                               <th>Action</th>
+                           </tr>
                        </thead>
                        <tbody>
-                       @foreach($categories as $category)
-                           <tr>
-                               <td>{{ $category->id }}</td>
-                               <td>{{ $category->name }}</td>
-                               <td>{{ $category->description }}</td>
-                           </tr>
-                       @endforeach
+                           @foreach($categories as $category)
+                               <tr>
+                                   <td>{{ $category->id }}</td>
+                                   <td>{{ $category->name }}</td>
+                                   <td>{{ $category->description }}</td>
+                                   <td>
+                                       <a href="{{route('category.edit', $category->id) }}" class="btn btn-warning" role="button">Edit</a>
+                                   </td>
+                                   <td>
+                                       <form method="post" action="{{route('category.delete', $category->id )}}}}">
+                                           @csrf
+                                           @method('DELETE')
+                                           <button class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')">Delete</button>
+                                       </form>
+                                   </td>
+                               </tr>
+                           @endforeach
                        </tbody>
                    </table>
                </div>
